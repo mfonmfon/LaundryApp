@@ -23,9 +23,15 @@ listOfMembers = ["Emily", "Jack", "Sophie", "Daniel"]
 listOfBooks = ["Rich Dad Poor Dad", "Psychology Of Money", "Richest Man In Babylon", "Think And Grow Rich"]
 
 for (let iterate of listOfMembers ){
-
-
+     let allocate = listOfBooks.shift();
+     console.log(`${iterate} ${allocate}`);
 }
+
+let time = ["9:00 AM", "11:00 AM", "1:00 PM", "3:00 PM", "5:00 PM"];
+
+
+
+
 
 
 
