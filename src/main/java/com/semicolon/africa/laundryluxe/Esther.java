@@ -1,8 +1,7 @@
 package com.semicolon.africa.laundryluxe;
 
-public class Dayo {
-
+public class Esther {
     public static void main(String[] args) {
-        System.out.println("Hello");
+        System.out.println("Hello Esther!");
     }
 }
