@@ -2,8 +2,10 @@ package com.semicolon.africa.laundryluxe.services;
 
 import com.semicolon.africa.laundryluxe.data.model.Launderer;
 import com.semicolon.africa.laundryluxe.data.repository.LaundererRepository;
+import com.semicolon.africa.laundryluxe.dto.request.LaundererSendRequest;
 import com.semicolon.africa.laundryluxe.dto.request.LoginLaundererRequest;
 import com.semicolon.africa.laundryluxe.dto.request.SignUpLaundererRequest;
+import com.semicolon.africa.laundryluxe.dto.response.LaundererSendResponse;
 import com.semicolon.africa.laundryluxe.dto.response.LoginLaundererResponse;
 import com.semicolon.africa.laundryluxe.dto.response.SignUpCustomerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,19 @@ public class LaundererServiceImpl implements LaundererService{
         }
         return response;
     }
+
+    public LaundererSendResponse laundererSendPackage(LaundererSendRequest request){
+        return null;
+    }
+
+
+
+
+
+
+
+
+
 
 
 
