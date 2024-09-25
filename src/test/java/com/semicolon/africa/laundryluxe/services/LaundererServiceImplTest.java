@@ -1,6 +1,9 @@
 package com.semicolon.africa.laundryluxe.services;
 
+import com.semicolon.africa.laundryluxe.data.repository.LaundererRepository;
+import com.semicolon.africa.laundryluxe.dto.request.LoginLaundererRequest;
 import com.semicolon.africa.laundryluxe.dto.request.SignUpLaundererRequest;
+import com.semicolon.africa.laundryluxe.dto.response.LoginLaundererResponse;
 import com.semicolon.africa.laundryluxe.dto.response.SignUpCustomerResponse;
 import com.semicolon.africa.laundryluxe.dto.response.SignUpLaundererResponse;
 import org.junit.jupiter.api.Test;
@@ -13,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class LaundererServiceImplTest {
     @Autowired
     LaundererService laundererService;
+    @Autowired
+    private LaundererRepository laundererRepository;
 
     @Test
     public void testTOSignUpLaunderer() {
@@ -28,5 +33,17 @@ class LaundererServiceImplTest {
         response.setMessage("Sign up successful");
         assertEquals(response.getMessage(), "Sign up successful");
     }
+
+    @Test
+    public void testToLoginLaunderer() {
+        LoginLaundererResponse response = new LoginLaundererResponse();
+        LoginLaundererRequest request = new LoginLaundererRequest();
+        request.setEmail("mfon@gmail.com");
+        request.setPassword("oscker");
+        response = laundererService.loginLaunderer(request);
+        assertTrue(response.isLoggedIn());
+    }
+
+
 
 }

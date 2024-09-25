@@ -9,7 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 import java.time.LocalDateTime;
+
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -28,5 +32,7 @@ public class Customer {
     private String specialInstructions;
     private String password;
     private String confirmPassword;
+
     private LocalDateTime sendAt;
+
 }
