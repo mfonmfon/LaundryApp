@@ -8,6 +8,8 @@ class LaundryLuxeApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//Test
 	}
+
 
 }
