@@ -1,7 +1,9 @@
 package com.semicolon.africa.laundryluxe.utils;
 
 import com.semicolon.africa.laundryluxe.data.model.Customer;
+import com.semicolon.africa.laundryluxe.dto.request.SendCustomerOrderRequest;
 import com.semicolon.africa.laundryluxe.dto.request.SignupCustomerRequest;
+import com.semicolon.africa.laundryluxe.dto.response.SendCustomerOrderResponse;
 import com.semicolon.africa.laundryluxe.dto.response.SignUpCustomerResponse;
 import com.semicolon.africa.laundryluxe.exceptions.InvalidEmailException;
 
@@ -16,6 +18,7 @@ public class Mapper {
         customer.setConfirmPassword(signupCustomerRequest.getConfirmPassword());
         if (signupCustomerRequest.getEmail() == "@") {
             throw new InvalidEmailException("Missing @ in your email");
+
         }
         if (signupCustomerRequest.getEmail() == ".") {
             throw new InvalidEmailException("Missing . in your email");
@@ -34,6 +37,28 @@ public class Mapper {
         signUpCustomerResponse.setConfirmPassword(customer.getConfirmPassword());
         signUpCustomerResponse.setMessage("Successfully signup");
         return signUpCustomerResponse;
+    }
+
+    public static void sendOrderRequestMapper(SendCustomerOrderRequest sendCustomerOrderRequest, Customer customer) {
+        customer.setFirstName(sendCustomerOrderRequest.getFirstName());
+        customer.setLastName(sendCustomerOrderRequest.getLastName());
+        customer.setEmail(sendCustomerOrderRequest.getEmail());
+        customer.setPhoneNumber(sendCustomerOrderRequest.getPhoneNumber());
+        customer.setHomeAddress(sendCustomerOrderRequest.getHomeAddress());
+        customer.setSpecialInstructions(sendCustomerOrderRequest.getSpecialInstructions());
+        customer.setSendAt(sendCustomerOrderRequest.getCreatedAt());
+    }
+
+    public static SendCustomerOrderResponse getSendCustomerOrderResponse(Customer customer) {
+        SendCustomerOrderResponse sendCustomerOrderResponse = new SendCustomerOrderResponse();
+        sendCustomerOrderResponse.setFirstName(customer.getFirstName());
+        sendCustomerOrderResponse.setLastName(customer.getLastName());
+        sendCustomerOrderResponse.setEmail(customer.getEmail());
+        sendCustomerOrderResponse.setPhoneNumber(customer.getPhoneNumber());
+        sendCustomerOrderResponse.setHomeAddress(customer.getHomeAddress());
+        sendCustomerOrderResponse.setSpecialInstructions(customer.getSpecialInstructions());
+        sendCustomerOrderResponse.setMessage("Just Ordered");
+        return sendCustomerOrderResponse;
     }
 
 }
