@@ -1,4 +1,4 @@
 package com.semicolon.africa.laundryluxe.services;
 
-public interface OrderService {
+public interface OrderPlacementService {
 }
