@@ -15,7 +15,7 @@ public class LaundererServiceImpl implements LaundererService{
 
     public SignUpCustomerResponse signUp(SignUpLaundererRequest request) {
         SignUpCustomerResponse response = new SignUpCustomerResponse();
-        if(laundererRepository == null){
+        if(laundererRepository != null){
             Launderer launderer = new Launderer();
             launderer.setFirstName(validateFirstName(request.getFirstName()).toLowerCase());
             launderer.setLastName(validateLastName(request.getLastName()).toLowerCase());
