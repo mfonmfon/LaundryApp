@@ -2,7 +2,9 @@ package com.semicolon.africa.laundryluxe.services;
 
 import com.semicolon.africa.laundryluxe.data.model.Launderer;
 import com.semicolon.africa.laundryluxe.data.repository.LaundererRepository;
+import com.semicolon.africa.laundryluxe.dto.request.LoginLaundererRequest;
 import com.semicolon.africa.laundryluxe.dto.request.SignUpLaundererRequest;
+import com.semicolon.africa.laundryluxe.dto.response.LoginLaundererResponse;
 import com.semicolon.africa.laundryluxe.dto.response.SignUpCustomerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,7 @@ public class LaundererServiceImpl implements LaundererService{
 
     public SignUpCustomerResponse signUp(SignUpLaundererRequest request) {
         SignUpCustomerResponse response = new SignUpCustomerResponse();
-        if(laundererRepository != null){
+        if(laundererRepository.findByEmail(request.getEmail()) == null){
             Launderer launderer = new Launderer();
             launderer.setFirstName(validateFirstName(request.getFirstName()).toLowerCase());
             launderer.setLastName(validateLastName(request.getLastName()).toLowerCase());
@@ -31,6 +33,22 @@ public class LaundererServiceImpl implements LaundererService{
         response.setMessage("Successfully signed up");
         return response;
     }
+
+    public LoginLaundererResponse loginLaunderer(LoginLaundererRequest request) {
+        LoginLaundererResponse response = new LoginLaundererResponse();
+        Launderer launderer =  laundererRepository.findByEmailAndPassword(validateEmail(request.getEmail()).toLowerCase(),validatePassword(request.getPassword()).toLowerCase());
+        if(launderer != null){
+            response.setLoggedIn(true);
+            launderer.setLoggedIn(true);
+        }
+        else{
+            response.setLoggedIn(false);
+            launderer.setLoggedIn(false);
+        }
+        return response;
+    }
+
+
 
     private String validateFirstName(String firstName) {
         if (firstName.contains(" ")) {
